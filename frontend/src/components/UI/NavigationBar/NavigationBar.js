@@ -12,7 +12,7 @@ const NavigationBar = () => {
       <Navbar color="light" light expand="md">
         <NavbarBrand className='mr-auto' href="/">Gallery App</NavbarBrand>
         <div>
-          {user ? <UserMenu displayName={user.displayName}/> : <AnonymousMenu />}
+          {user ? <UserMenu user={user}/> : <AnonymousMenu />}
         </div>
       </Navbar>
     </div>

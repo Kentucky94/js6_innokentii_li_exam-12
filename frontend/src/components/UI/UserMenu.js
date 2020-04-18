@@ -10,13 +10,10 @@ const UserMenu = props => {
 
   return (
     <Fragment>
-      <b>Welcome, {props.displayName}!</b>
-      {props.role === 'admin' ? (
-        <Button color="success" tag={RouterNavLink} to='/cocktails/all'>Cocktail moderation page</Button>
-      ): (
-        <Button color="success" tag={RouterNavLink} to='/cocktails/all'>MyCocktails</Button>
-      )}
-      <Button color="danger" onClick={() => dispatch(logoutUser())}>Logout</Button>
+      <b>Welcome, {props.user.displayName}!</b>
+      <Button className='ml-2' color="primary" tag={RouterNavLink} to='/pictures/add'>Add new picture</Button>
+      <Button className='ml-2' color="success" tag={RouterNavLink} to={'/pictures/' + props.user._id}>My pictures</Button>
+      <Button className='ml-2' color="danger" onClick={() => dispatch(logoutUser())}>Logout</Button>
     </Fragment>
   );
 };
