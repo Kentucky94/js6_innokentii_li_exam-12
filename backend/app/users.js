@@ -7,6 +7,16 @@ const User = require('../models/User');
 
 const router = express.Router();
 
+router.get('/:id', async (req, res) => {
+  try{
+    const user = await User.findOne({_id: req.params.id});
+    user.token = '';
+    return res.send(user);
+  }catch(error){
+    return res.status(400).send(error);
+  }
+});
+
 router.post('/facebook', async (req, res) => {
   try{
     const inputToken = req.body.accessToken;

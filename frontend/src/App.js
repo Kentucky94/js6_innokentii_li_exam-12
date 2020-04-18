@@ -7,6 +7,7 @@ import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
 import GalleryMainPage from "./containers/GalleryMainPage/GalleryMainPage";
 import AddPicturePage from "./containers/AddPicturePage/AddPicturePage";
+import GalleryUserPage from "./containers/GalleryUserPage/GalleryUserPage";
 
 const App = () => {
   return (
@@ -17,6 +18,8 @@ const App = () => {
         <Route path='/login' exact component={Login} />
         <Route path='/register' exact component={Register} />
         <Route path='/pictures/add' exact component={AddPicturePage} />
+        <Route path='/pictures/:id' exact component={GalleryUserPage} />
+        <Route render={() => <h3>Page not found</h3>}/>
       </Switch>
     </Layout>
   );

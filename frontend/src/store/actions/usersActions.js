@@ -4,10 +4,24 @@ import {push} from 'connected-react-router';
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS';
+export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 
 export const registerUserSuccess = () => ({type: REGISTER_USER_SUCCESS});
 export const loginUserSuccess = user => ({type: LOGIN_USER_SUCCESS, user});
 export const logoutUserSuccess = () => ({type: LOGOUT_USER_SUCCESS});
+export const fetchUserSuccess = pageUser => ({type: FETCH_USER_SUCCESS, pageUser});
+
+export const fetchUser = userId => {
+  return async dispatch => {
+    try{
+      const response = await axiosOrders.get('/users/' + userId);
+
+      dispatch(fetchUserSuccess(response.data));
+    }catch(error){
+      console.log(error);
+    }
+  }
+};
 
 export const loginWithFacebook = facebookData => {
   return async dispatch => {
