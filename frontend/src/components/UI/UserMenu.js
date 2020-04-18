@@ -16,7 +16,6 @@ const UserMenu = props => {
       ): (
         <Button color="success" tag={RouterNavLink} to='/cocktails/all'>MyCocktails</Button>
       )}
-      <Button color='info' tag={RouterNavLink} to='/cocktails/create'>Create new cocktail</Button>
       <Button color="danger" onClick={() => dispatch(logoutUser())}>Logout</Button>
     </Fragment>
   );

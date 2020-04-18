@@ -1,6 +1,4 @@
 const express = require('express');
-const multer = require('multer');
-const path = require('path');
 const axios = require('axios');
 const {nanoid} = require('nanoid');
 
@@ -8,17 +6,6 @@ const config = require('../config');
 const User = require('../models/User');
 
 const router = express.Router();
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, config.uploadPath + '/avatars')
-  },
-  filename: (req, file, cb) => {
-    cb(null, nanoid() + path.extname(file.originalname))
-  }
-});
-
-const upload = multer({storage});
 
 router.post('/facebook', async (req, res) => {
   try{
@@ -51,17 +38,13 @@ router.post('/facebook', async (req, res) => {
   }
 });
 
-router.post('/', upload.single('avatar') ,async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const userData = {
       username: req.body.username,
       password: req.body.password,
       displayName: req.body.displayName,
     };
-
-    if(req.file){
-      userData.avatar = req.file.filename
-    }
 
     const user = new User(userData);
 

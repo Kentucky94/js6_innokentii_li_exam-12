@@ -30,19 +30,9 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  role: {
-    type: String,
-    required: true,
-    default: 'user',
-    enum: ['user', 'admin'],
-  },
   displayName: {
     type: String,
     required: true,
-  },
-  avatar: {
-    type: String,
-    default: 'noAvatar.jpg'
   }
 });
 
