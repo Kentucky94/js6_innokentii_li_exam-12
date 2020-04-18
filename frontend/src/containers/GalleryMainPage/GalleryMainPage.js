@@ -11,8 +11,10 @@ class GalleryMainPage extends Component {
   render() {
     const pictures = this.props.pictures.map(picture =>
       <PictureCard
+        key={picture._id}
         name={picture.name}
         author={picture.author.displayName}
+        authorId={picture.author._id}
         image={picture.image}
       />
     );

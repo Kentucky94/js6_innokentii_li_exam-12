@@ -6,6 +6,7 @@ import Layout from "./components/Layout/Layout";
 import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
 import GalleryMainPage from "./containers/GalleryMainPage/GalleryMainPage";
+import AddPicturePage from "./containers/AddPicturePage/AddPicturePage";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path='/' exact component={GalleryMainPage} />
         <Route path='/login' exact component={Login} />
         <Route path='/register' exact component={Register} />
+        <Route path='/pictures/add' exact component={AddPicturePage} />
       </Switch>
     </Layout>
   );
