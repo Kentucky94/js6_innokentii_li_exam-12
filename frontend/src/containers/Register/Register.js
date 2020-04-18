@@ -1,14 +1,15 @@
 import React, {Component, Fragment} from 'react';
 import {Button, Col, Form, FormGroup} from "reactstrap";
 import FormElement from "../../components/UI/FormElement/FormElement";
-import {loginUser} from "../../store/actions/usersActions";
+import {registerUser} from "../../store/actions/usersActions";
 import {connect} from "react-redux";
 import FacebookLogin from "../../components/UI/FacebookLogin/FacebookLogin";
 
-class Login extends Component {
+class Register extends Component {
   state = {
     username: '',
     password: '',
+    displayName: '',
   };
 
   inputChangeHandler = event => {
@@ -18,14 +19,14 @@ class Login extends Component {
   onSubmitHandler = event => {
     event.preventDefault();
 
-    this.props.loginUser({...this.state});
+    this.props.registerUser({...this.state});
   };
 
   render() {
     return (
       <Fragment>
-        <h2>Login</h2>
-        <FacebookLogin />
+        <h2>Registration</h2>
+        <FacebookLogin/>
         <Form onSubmit={this.onSubmitHandler}>
           <FormElement
             propertyName="username"
@@ -43,10 +44,18 @@ class Login extends Component {
             onChange={this.inputChangeHandler}
             required
           />
+          <FormElement
+            propertyName="displayName"
+            title="Display Name"
+            type="text"
+            value={this.state.displayName}
+            onChange={this.inputChangeHandler}
+            required
+          />
           <FormGroup row>
             <Col sm={{offset: 2, size: 10}}>
               <Button type="submit" color="primary">
-                Login user
+                Create new user
               </Button>
             </Col>
           </FormGroup>
@@ -56,12 +65,8 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.users.user,
-});
-
 const mapDispatchToProps = dispatch => ({
-  loginUser: userData => dispatch(loginUser(userData)),
+  registerUser: userData => dispatch(registerUser(userData)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Register);

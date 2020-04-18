@@ -1,26 +1,12 @@
 import React from 'react';
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import {Button} from "reactstrap";
-import {useDispatch} from "react-redux";
-import {loginWithFacebook} from "../../store/actions/usersActions";
+import {NavLink as RouterNavLink} from "react-router-dom";
 
 const AnonymousMenu = () => {
-  const dispatch = useDispatch();
-
-  const responseFacebook = event => {
-    dispatch(loginWithFacebook(event));
-    console.log(event);
-  };
-
   return (
     <div>
-      <FacebookLogin
-        appId="237001530836786"
-        callback={responseFacebook}
-        render={renderProps => (
-          <Button color='primary' onClick={renderProps.onClick}>Login with Facebook</Button>
-        )}
-      />
+      <Button tag={RouterNavLink} to='/login' color='success'>Login</Button>
+      <Button tag={RouterNavLink} to='/register' color='primary'>Register</Button>
     </div>
   );
 };

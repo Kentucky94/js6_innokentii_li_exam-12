@@ -10,9 +10,9 @@ const NavigationBar = () => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand className='mr-auto' href="/">CocktailApp</NavbarBrand>
+        <NavbarBrand className='mr-auto' href="/">Gallery App</NavbarBrand>
         <div>
-          {user ? <UserMenu displayName={user.displayName} role={user.role} userId={user._id}/> : <AnonymousMenu />}
+          {user ? <UserMenu displayName={user.displayName}/> : <AnonymousMenu />}
         </div>
       </Navbar>
     </div>

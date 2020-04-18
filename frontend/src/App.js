@@ -1,22 +1,18 @@
 import React from 'react';
-import {Switch, Route, Redirect} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import {ToastContainer} from "react-toastify";
 
 import Layout from "./components/Layout/Layout";
-import {useSelector} from "react-redux";
-
-const ProtectedRoute = ({isAllowed, ...props}) => {
-  return isAllowed ? <Route {...props} /> : <Redirect to='/' />
-};
+import Login from "./containers/Login/Login";
+import Register from "./containers/Register/Register";
 
 const App = () => {
-  const user = useSelector(state => state.users.user);
-
   return (
     <Layout>
       <ToastContainer />
       <Switch>
-
+        <Route path='/login' exact component={Login} />
+        <Route path='/register' exact component={Register} />
       </Switch>
     </Layout>
   );
